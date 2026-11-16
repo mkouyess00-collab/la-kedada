@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'sha256-yS+MoR895E5fQXQb1bcmA1ADNQ9trKHrKtmUkhwAQJg='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'sha256-ZKkt0WIe0nvH0aFKLDK+oP5/TXM7JB00dKj35xL4imU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>La KeDada · Bar de tapas en Mota del Cuervo</title>
 <meta name="description" content="La KeDada, bar de tapas en la Plaza de la Tercia, 3, Mota del Cuervo (Cuenca). Más que una tapa, un punto de encuentro. Carta con precios y horario.">
@@ -14,7 +14,7 @@
 <style>
 :root{
   --carbon:#100c0b; --carbon2:#1a1412; --madera:#2b1d17;
-  --rojo:#c81e2c; --rojo-claro:#f0525c; --crema:#f4ece0; --crema2:#ebdfcd;
+  --rojo:#c81e2c; --rojo-claro:#f0525c; --crema:#f4ece0; --crema2:#ebdfcd; --papel:#fffdf7;
   --oro:#d9b26a; --gris:#b3a89c; --tinta:#1b1512;
   --ease:cubic-bezier(.22,1,.36,1);
 }
@@ -27,365 +27,282 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
 .wrap{width:min(1240px,100% - 32px);margin-inline:auto}
 section{position:relative}
-
-/* grano */
-body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.08;
+body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;opacity:.07;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grano 1s steps(6) infinite}
 @keyframes grano{0%{transform:translate(0,0)}25%{transform:translate(-4%,3%)}50%{transform:translate(3%,-5%)}75%{transform:translate(-6%,-2%)}100%{transform:translate(0,0)}}
-.progreso{position:fixed;top:0;left:0;height:3px;width:100%;z-index:80;transform-origin:0 50%;transform:scaleX(0);background:var(--rojo)}
 
-/* ---------- MARCA ---------- */
-.marca{font-family:"Caveat Brush",cursive;line-height:.85;color:var(--crema);white-space:nowrap;letter-spacing:.01em}
+.marca{font-family:"Caveat Brush",cursive;line-height:.85;color:var(--crema);white-space:nowrap}
 .marca .r{color:var(--rojo-claro)}
-.marca-sub{display:block;font-family:"Barlow Condensed";font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:var(--oro)}
-.lema{font-family:"Barlow Condensed";font-weight:600;font-size:15px;letter-spacing:.2em;text-transform:uppercase;color:var(--crema2)}
-.lema i{font-style:normal;color:var(--rojo-claro);padding:0 .5em}
-
-/* ---------- TELÓN ---------- */
-.telon{position:fixed;inset:0;z-index:100;display:grid;place-items:center}
-.telon .hoja{position:absolute;top:0;bottom:0;width:50.5%;background:var(--carbon2)}
-.telon .hoja.a{left:0;border-right:2px solid var(--rojo)}
-.telon .hoja.b{right:0;background:#150f0d}
-.telon .cartel{position:relative;z-index:2;text-align:center}
-.telon .marca{font-size:clamp(84px,15vw,190px)}
-.telon .marca span{display:inline-block}
-.telon .marca-sub{font-size:16px;margin-top:14px}
-.reducido .telon{display:none}
-
-/* ---------- CABECERA ---------- */
-.cab{position:fixed;top:0;left:0;right:0;z-index:70;transition:background .4s}
-.cab.solida{background:rgba(16,12,11,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
-.cab .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
-.cab .marca{font-size:40px}
-.nav{display:flex;align-items:center;gap:30px;font-family:"Barlow Condensed";font-weight:600;font-size:16px;letter-spacing:.12em;text-transform:uppercase}
-.nav a:not(.btn){opacity:.85;transition:color .3s,opacity .3s}
-.nav a:not(.btn):hover{opacity:1;color:var(--oro)}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;border-radius:999px;font-family:"Barlow Condensed";font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;transition:background .3s,color .3s,border-color .3s;will-change:transform}
+.cond{font-family:"Barlow Condensed";font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 26px;border-radius:999px;font-family:"Barlow Condensed";font-weight:700;font-size:16px;letter-spacing:.12em;text-transform:uppercase;transition:transform .15s,background .3s}
+.btn:active{transform:scale(.94)}
 .btn-rojo{background:var(--rojo);color:#fff}
 .btn-rojo:hover{background:#a8141f}
-.btn-linea{border:1.5px solid rgba(244,236,224,.55);color:var(--crema)}
-.btn-linea:hover{border-color:var(--oro);color:var(--oro)}
-.btn svg{width:18px;height:18px}
-
-/* ---------- PORTADA ---------- */
-.portada{min-height:100svh;display:grid;align-items:center;overflow:hidden;isolation:isolate;padding:120px 0 70px;
-  background:
-    radial-gradient(40% 35% at 78% 30%,rgba(217,178,106,.18),transparent 70%),
-    radial-gradient(30% 30% at 12% 85%,rgba(200,30,44,.18),transparent 70%),
-    linear-gradient(180deg,#140f0d,var(--carbon))}
-.luces{position:absolute;inset:0;z-index:-1;pointer-events:none}
-.luces i{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(255,206,130,.55),rgba(255,206,130,0) 70%);filter:blur(2px)}
-.portada .rejilla{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
-.portada .marca-sub{font-size:15px;margin-bottom:6px}
-.portada h1 .marca{display:block;font-size:clamp(96px,13vw,200px);margin-left:-.04em}
-.portada h1 .marca span{display:inline-block}
-.portada .lema{margin-top:18px}
-.portada p.lead{font-family:"DM Serif Display";font-size:clamp(26px,2.6vw,38px);line-height:1.15;margin-top:28px;max-width:560px}
-.portada p.lead em{color:var(--oro)}
-.acciones{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.estado{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);font-size:14px;font-weight:600;margin-bottom:22px}
-.estado i{width:9px;height:9px;border-radius:50%;background:var(--rojo-claro)}
-.estado.abierto i{background:#6fdc8c;animation:latido 1.6s infinite}
-@keyframes latido{50%{opacity:.35}}
-/* abanico de carteles */
-.abanico{position:relative;height:min(640px,72svh)}
-.cartel-foto{position:absolute;width:52%;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 0 6px var(--crema);background:var(--crema);cursor:pointer;will-change:transform}
-.cartel-foto img{width:100%;height:auto}
-.cartel-foto.c1{left:2%;top:12%;transform:rotate(-9deg)}
-.cartel-foto.c2{left:26%;top:2%;z-index:2;transform:rotate(2deg)}
-.cartel-foto.c3{right:0;top:20%;z-index:3;transform:rotate(10deg)}
-.sello{position:absolute;z-index:4;right:2%;bottom:4%;width:132px;height:132px;border-radius:50%;background:var(--rojo);display:grid;place-items:center;text-align:center;font-family:"Caveat Brush";font-size:25px;line-height:1;color:#fff;transform:rotate(-12deg);box-shadow:0 14px 30px rgba(0,0,0,.45)}
-.sello small{display:block;font-family:"Barlow Condensed";font-size:12px;letter-spacing:.2em;margin-top:4px}
-
-/* ---------- BANDA PIZARRA ---------- */
-.banda{overflow:hidden;padding:22px 0;background:var(--rojo);color:#fff}
-.banda .pista{display:flex;width:max-content;will-change:transform}
-.banda span{font-family:"Caveat Brush";font-size:clamp(38px,5vw,64px);white-space:nowrap;padding-right:.5em}
-.banda span b{font-weight:400;color:var(--carbon)}
-
-/* ---------- TÍTULOS ---------- */
-.eti{display:inline-flex;align-items:center;gap:12px;font-family:"Barlow Condensed";font-weight:700;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:16px}
-.eti::before{content:"";width:30px;height:2px;background:currentColor}
-.titulo{font-family:"DM Serif Display";font-weight:400;font-size:clamp(44px,6.4vw,96px);line-height:.98;letter-spacing:-.01em}
-.titulo .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em}
-.titulo .w>span{display:inline-block}
-.titulo .rojo{color:var(--rojo-claro)}
+.btn-linea{border:1.5px solid currentColor}
+.eti{font-family:"Barlow Condensed";font-weight:700;font-size:15px;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:14px}
+.titulo{font-family:"DM Serif Display";font-weight:400;font-size:clamp(44px,6vw,92px);line-height:1;letter-spacing:-.01em}
 .titulo .pincel{font-family:"Caveat Brush";color:var(--oro)}
+.titulo .rojo{color:var(--rojo-claro)}
 
-/* ---------- ENCUENTRO ---------- */
-.encuentro{padding:120px 0}
-.encuentro .rejilla{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
-.encuentro p.txt{font-size:19px;color:#e2d7c9;max-width:520px;margin-top:24px}
-.pizarra{margin-top:30px;padding:26px 28px;border-radius:18px;background:#1f2421;border:10px solid var(--madera);box-shadow:inset 0 0 40px rgba(0,0,0,.5),0 20px 40px rgba(0,0,0,.4);max-width:520px}
-.pizarra ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
-.pizarra li{font-family:"Caveat Brush";font-size:30px;line-height:1.15;color:#eee6da}
-.pizarra li::before{content:"✓ ";color:var(--rojo-claro)}
-.capas{position:relative;height:640px}
-.capas figure{position:absolute;border-radius:14px;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 0 6px var(--crema);background:var(--crema);cursor:pointer}
-.capas figure img{width:100%;height:auto}
-.capas .f1{width:58%;left:0;top:0}
-.capas .f2{width:52%;right:0;top:120px;z-index:2}
-.capas .nota{position:absolute;z-index:3;left:6%;bottom:0;padding:16px 20px;border-radius:12px;background:var(--crema);color:var(--tinta);font-family:"Caveat Brush";font-size:26px;line-height:1.1;transform:rotate(-3deg);box-shadow:0 14px 30px rgba(0,0,0,.4)}
-.capas .nota small{display:block;font-family:Barlow;font-size:13px;font-weight:600;color:#6b5f55;margin-top:4px}
+/* ---------- LOGO FIJO ARRIBA + PÍLDORA ABAJO ---------- */
+.logo-fijo{position:fixed;top:16px;left:20px;z-index:70;font-size:34px;padding:8px 16px 10px;border-radius:14px;background:rgba(26,20,18,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.pildora{position:fixed;left:50%;bottom:20px;z-index:70;transform:translateX(-50%);display:flex;align-items:center;gap:4px;padding:6px;border-radius:999px;background:rgba(26,20,18,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid rgba(244,236,224,.14);box-shadow:0 20px 40px rgba(0,0,0,.45)}
+.pildora a{padding:11px 18px;border-radius:999px;font-family:"Barlow Condensed";font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--crema2);transition:background .3s,color .3s}
+.pildora a:hover,.pildora a.activo{background:rgba(244,236,224,.1);color:#fff}
+.pildora a.menu{background:var(--rojo);color:#fff}
 
-/* ---------- PIZARRA DE TAPAS (escaparate horizontal) ---------- */
-.escaparate{padding:110px 0 120px;background:linear-gradient(180deg,var(--carbon),#170f0d 50%,var(--carbon))}
-.escaparate .cabeza{display:flex;justify-content:space-between;align-items:end;gap:40px;flex-wrap:wrap}
-.escaparate .cabeza p{max-width:400px;color:#e2d7c9}
-.carril{margin-top:56px;overflow:hidden}
-.tira{display:flex;gap:34px;width:max-content;padding:20px 16px 30px max(16px,calc((100vw - 1240px)/2));will-change:transform}
-.plato-cartel{flex:none;width:330px;text-align:left;cursor:pointer}
-.plato-cartel .marco{border-radius:14px;overflow:hidden;background:var(--crema);box-shadow:0 0 0 6px var(--crema),0 30px 50px rgba(0,0,0,.5);transition:transform .7s var(--ease)}
-.plato-cartel:hover .marco{transform:translateY(-10px) rotate(-1.5deg)}
-.plato-cartel img{width:100%;height:auto}
-.plato-cartel h3{font-family:"DM Serif Display";font-weight:400;font-size:26px;line-height:1.1;margin-top:24px}
-.plato-cartel .precio{display:inline-block;margin-top:8px;padding:4px 14px;border-radius:999px;background:var(--rojo);font-family:"Caveat Brush";font-size:24px;color:#fff}
+/* ---------- 1. INVITACIÓN ---------- */
+.invita{min-height:100svh;display:grid;align-items:center;padding:110px 0 120px;overflow:hidden;
+  background:radial-gradient(60% 50% at 75% 45%,#2a1c16,var(--carbon) 70%)}
+.invita .rejilla{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:40px;align-items:center}
+.quedamos{display:block;white-space:nowrap;font-family:"DM Serif Display";font-size:clamp(64px,7.8vw,128px);line-height:.9;letter-spacing:-.02em}
+.quedamos span{display:inline-block}
+.quedamos .q{color:var(--rojo-claro);font-style:italic}
+.invita .sub{font-family:"Caveat Brush";font-size:clamp(28px,2.8vw,40px);color:var(--oro);margin-top:12px}
+.tarjeta{margin-top:30px;max-width:520px;border-radius:18px;background:var(--crema);color:var(--tinta);padding:8px 26px;box-shadow:0 30px 60px rgba(0,0,0,.45)}
+.tarjeta .fila{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:baseline;padding:16px 0;border-bottom:1.5px dashed rgba(27,21,18,.25)}
+.tarjeta .fila:last-child{border-bottom:0}
+.tarjeta .cond{font-size:14px;color:var(--rojo)}
+.tarjeta b{font-size:19px}
+.tarjeta .fila div{font-size:16px;color:#3c322b}
+.tarjeta .fila a{color:var(--rojo);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.punto{display:inline-block;width:9px;height:9px;border-radius:50%;background:var(--rojo);margin-right:8px;vertical-align:middle}
+.punto.on{background:#2fa65a;animation:latido 1.6s infinite}
+@keyframes latido{50%{opacity:.3}}
+.mesa{position:relative;height:min(660px,78svh);touch-action:pan-y}
+.naipe{position:absolute;width:42%;border-radius:12px;overflow:hidden;background:var(--crema);box-shadow:0 0 0 5px var(--crema),0 24px 50px rgba(0,0,0,.55);cursor:grab;user-select:none;-webkit-user-drag:none;touch-action:none}
+.naipe:active{cursor:grabbing}
+.naipe img{width:100%;height:auto;pointer-events:none}
+.mesa .pista{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);font-family:"Caveat Brush";font-size:24px;color:var(--gris);white-space:nowrap}
 
-/* ---------- CARTA ---------- */
-.carta{padding:120px 0;background:var(--crema);color:var(--tinta);overflow:hidden;isolation:isolate}
-.carta::before,.carta::after{content:"";position:absolute;z-index:-1;border-radius:50%;background:var(--rojo)}
-.carta::before{width:520px;height:520px;right:-260px;top:-180px;opacity:.92}
-.carta::after{width:380px;height:380px;left:-220px;bottom:-140px;opacity:.9}
-.carta .eti{color:var(--rojo)}
-.carta .cabeza{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}
-.carta .cabeza p{max-width:380px;color:#4a3f37;font-size:18px}
-.carta .titulo .pincel{color:var(--rojo)}
-.pestanas{display:flex;gap:10px;margin:44px 0 30px;overflow-x:auto;scrollbar-width:none;padding:4px}
-.pestanas::-webkit-scrollbar{display:none}
-.pestana{flex:none;padding:12px 22px;border-radius:999px;border:1.5px solid var(--tinta);font-family:"Barlow Condensed";font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;transition:background .3s,color .3s}
-.pestana[aria-selected="true"]{background:var(--tinta);color:var(--crema)}
-.hoja-carta{background:#fffaf2;border-radius:22px;padding:14px 36px 26px;box-shadow:0 30px 60px rgba(43,29,23,.18)}
-.hoja-carta h3{font-family:"DM Serif Display";font-weight:400;font-size:34px;margin:18px 0 4px}
-.hoja-carta h3 b{font-weight:400;color:var(--rojo)}
-.lista{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 56px}
-.plato{display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:baseline;padding:16px 0;border-bottom:1px dotted rgba(27,21,18,.35)}
-.plato h4{font-weight:700;font-size:18px}
-.plato .precio{font-family:"DM Serif Display";font-size:21px;color:var(--rojo);white-space:nowrap}
-.plato p{grid-column:1/-1;font-size:14px;color:var(--rojo);font-weight:600}
-.plato .verfoto{grid-column:1/-1;justify-self:start;margin-top:8px;padding:6px 14px;border-radius:999px;background:var(--tinta);color:#fff;font-family:"Barlow Condensed";font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
-.plato .verfoto:hover{background:var(--rojo)}
-.carta .aviso{margin-top:22px;font-size:15px;color:#4a3f37}
-.carta .aviso button{text-decoration:underline;font-weight:700;color:var(--rojo)}
+/* ---------- 2. LA COMANDA (carta) ---------- */
+.comanda{padding:120px 0 110px;background:var(--crema);color:var(--tinta)}
+.comanda .eti{color:var(--rojo)}
+.comanda .titulo .pincel{color:var(--rojo)}
+.comanda .cabeza{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.comanda .cabeza p{max-width:400px;color:#4a3f37}
+.tickets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:40px 44px;margin-top:56px;align-items:start}
+.ticket{position:relative;background:var(--papel);padding:26px 28px 40px;box-shadow:0 18px 40px rgba(43,29,23,.16);
+  -webkit-mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/24px 12px repeat-x;
+          mask:linear-gradient(#000 0 0) top/100% calc(100% - 12px) no-repeat,conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) bottom/24px 12px repeat-x}
+.ticket:nth-child(odd){transform:rotate(-1deg)}
+.ticket:nth-child(even){transform:rotate(1.2deg);margin-top:30px}
+.ticket .cab{text-align:center;border-bottom:1.5px dashed rgba(27,21,18,.3);padding-bottom:14px;margin-bottom:6px}
+.ticket .cab .marca{font-size:34px;color:var(--tinta)}
+.ticket .cab .marca .r{color:var(--rojo)}
+.ticket .cab h3{font-family:"DM Serif Display";font-weight:400;font-size:30px;margin-top:6px}
+.ticket .cab small{display:block;font-size:12px;letter-spacing:.2em;color:#7a6c61;font-family:"Barlow Condensed";font-weight:600;text-transform:uppercase}
+.linea{display:grid;grid-template-columns:1fr auto;gap:2px 14px;align-items:baseline;padding:11px 0;border-bottom:1px dotted rgba(27,21,18,.3)}
+.linea h4{font-weight:700;font-size:17px}
+.linea .precio{font-family:"DM Serif Display";font-size:20px;color:var(--rojo);white-space:nowrap}
+.linea p{grid-column:1/-1;font-size:14px;color:#8a2a26;font-weight:600}
+.linea .verfoto{grid-column:1/-1;justify-self:start;margin-top:6px;padding:5px 13px;border-radius:999px;background:var(--tinta);color:#fff;font-family:"Barlow Condensed";font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.linea .verfoto:hover{background:var(--rojo)}
+.ticket .total{display:flex;justify-content:space-between;margin-top:14px;font-family:"Barlow Condensed";font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;color:#7a6c61}
+.comanda .aviso{margin-top:40px;text-align:center;color:#4a3f37}
+.comanda .aviso button{text-decoration:underline;font-weight:700;color:var(--rojo)}
 
-/* ---------- HORARIO ---------- */
-.horario-s{padding:120px 0}
-.horario-s .rejilla{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.tablon{padding:44px 44px 36px;border-radius:20px;background:linear-gradient(160deg,#1d1614,#120d0c);border:1px solid rgba(217,178,106,.25);box-shadow:0 30px 60px rgba(0,0,0,.45)}
-.tablon h3{font-family:"DM Serif Display";font-weight:400;font-size:clamp(48px,5vw,72px);line-height:1;color:var(--oro);text-align:center;letter-spacing:.04em}
-.tablon .marca-sub{text-align:center;margin:8px 0 26px;font-size:13px}
-.dias{list-style:none}
-.dias li{display:grid;grid-template-columns:1fr auto;gap:20px;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.08);font-family:"Barlow Condensed";font-weight:600;font-size:19px;letter-spacing:.12em;text-transform:uppercase}
-.dias li:last-child{border-bottom:0}
-.dias li span:last-child{color:#e2d7c9;letter-spacing:.06em}
-.dias li.cerrado span:last-child{color:var(--rojo-claro)}
-.dias li.hoy{background:rgba(200,30,44,.16);border-radius:10px;padding-inline:12px}
-.dias li.hoy span:first-child::after{content:" · hoy";color:var(--oro)}
-.horario-s p.txt{font-size:19px;color:#e2d7c9;max-width:480px;margin-top:22px}
+/* ---------- 3. LA PILA DE TAPAS ---------- */
+.pila{padding:110px 0 60px}
+.pila .cabeza{max-width:720px}
+.pila .cabeza p{color:#e2d7c9;margin-top:14px;max-width:520px}
+.mazo{margin-top:50px}
+.carta-tapa{position:sticky;top:12vh;height:72vh;min-height:460px;margin-bottom:9vh;display:grid;grid-template-columns:auto 1fr;gap:48px;align-items:center;padding:34px 48px;border-radius:26px;background:var(--carbon2);border:1px solid rgba(244,236,224,.1);box-shadow:0 -20px 50px rgba(0,0,0,.45);transform-origin:50% 0;cursor:pointer}
+.carta-tapa:nth-child(even){background:#22140f}
+.carta-tapa .foto{height:100%;display:flex;align-items:center}
+.carta-tapa img{height:100%;max-height:100%;width:auto;border-radius:12px;box-shadow:0 0 0 5px var(--crema)}
+.carta-tapa .num{font-family:"Caveat Brush";font-size:40px;color:var(--oro)}
+.carta-tapa h3{font-family:"DM Serif Display";font-weight:400;font-size:clamp(36px,4.4vw,68px);line-height:1;margin:6px 0 18px}
+.carta-tapa .precio{display:inline-block;padding:6px 20px;border-radius:999px;background:var(--rojo);font-family:"Caveat Brush";font-size:34px;color:#fff}
+.carta-tapa p{margin-top:16px;color:#d8ccbe;max-width:380px}
 
-/* ---------- VISITA ---------- */
-.visita{padding:40px 0 120px}
-.visita .rejilla{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px;align-items:stretch}
-.ficha{padding:36px;border-radius:20px;background:var(--carbon2);border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:20px}
-.ficha small{display:block;font-family:"Barlow Condensed";font-weight:700;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gris);margin-bottom:4px}
-.ficha b{font-size:20px}
-.ficha .acciones{margin-top:auto}
-.mapa{border-radius:20px;overflow:hidden;min-height:380px;border:1px solid rgba(255,255,255,.1)}
-.mapa iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.25) contrast(1.05)}
+/* ---------- 4. MANIFIESTO ---------- */
+.manifiesto{padding:120px 0 130px}
+.manifiesto .eti{text-align:center}
+.manifiesto p.grande{font-family:"DM Serif Display";font-size:clamp(34px,4.6vw,70px);line-height:1.12;text-align:center;max-width:1100px;margin-inline:auto}
+.manifiesto p.grande .pal{opacity:.14;transition:none}
+.manifiesto p.grande .acento{font-family:"Caveat Brush";color:var(--rojo-claro)}
+.pizarra{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:50px}
+.pizarra span{font-family:"Caveat Brush";font-size:30px;padding:8px 22px;border-radius:12px;background:#1f2421;border:6px solid var(--madera);color:#eee6da}
 
-/* ---------- PIE ---------- */
-.pie-web{padding:90px 0 36px;text-align:center;border-top:1px solid rgba(217,178,106,.2);overflow:hidden}
-.pie-web .marca{font-size:clamp(90px,17vw,250px)}
-.pie-web .lema{margin-top:18px}
-.pie-web nav{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 28px;margin:40px 0 28px;font-family:"Barlow Condensed";font-weight:600;letter-spacing:.12em;text-transform:uppercase}
-.pie-web nav a:hover{color:var(--oro)}
-.pie-web p{font-size:13px;color:var(--gris)}
+/* ---------- 5. LA SEMANA ---------- */
+.semana{padding:110px 0;background:linear-gradient(180deg,var(--carbon),#170f0d)}
+.semana .cabeza{display:flex;justify-content:space-between;align-items:end;gap:30px;flex-wrap:wrap}
+.semana .cabeza p{max-width:420px;color:#e2d7c9}
+.dias{list-style:none;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:12px;margin-top:50px;perspective:900px}
+.dia{border-radius:16px;background:var(--crema);color:var(--tinta);padding:20px 12px 22px;text-align:center;transform-origin:50% 0;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.dia .nom{font-family:"Barlow Condensed";font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:15px}
+.dia .h{font-family:"DM Serif Display";font-size:26px;line-height:1.1}
+.dia .h small{display:block;font-family:Barlow;font-size:13px;color:#7a6c61;margin:4px 0}
+.dia.cerrado{background:#2a201c;color:var(--gris)}
+.dia.cerrado .h{font-family:"Caveat Brush";color:var(--rojo-claro);font-size:30px}
+.dia.hoy{background:var(--rojo);color:#fff;box-shadow:0 20px 40px rgba(0,0,0,.4)}
+.dia.hoy .h small{color:#ffd9dc}
+.dia.hoy .nom::after{content:"· hoy";display:block;font-family:"Caveat Brush";letter-spacing:0;text-transform:none;font-size:22px;font-weight:400}
+.dia.fest{background:#3a2a20;color:var(--oro)}
+.dia.fest .h small{color:var(--crema2)}
+
+/* ---------- 6. PUNTO DE ENCUENTRO ---------- */
+.encuentro{height:92svh;min-height:560px;overflow:hidden}
+.encuentro iframe{position:absolute;inset:0;width:100%;height:100%;border:0;filter:grayscale(.4) contrast(1.05) brightness(.9)}
+.encuentro .ticket-final{position:absolute;left:max(16px,calc((100vw - 1240px)/2));top:50%;transform:translateY(-50%) rotate(-2deg);width:min(420px,calc(100% - 32px));background:var(--crema);color:var(--tinta);border-radius:20px;padding:30px;box-shadow:0 30px 60px rgba(0,0,0,.5)}
+.ticket-final .marca{font-size:52px;color:var(--tinta)}
+.ticket-final .marca .r{color:var(--rojo)}
+.ticket-final h2{font-family:"Caveat Brush";font-weight:400;font-size:38px;color:var(--rojo);margin:6px 0 10px}
+.ticket-final p{color:#3c322b}
+.ticket-final .acciones{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.ticket-final .btn-linea{color:var(--tinta)}
+
+.pie{padding:40px 0 120px;text-align:center;font-size:13px;color:var(--gris)}
+.pie a{color:var(--crema2);text-decoration:underline}
 
 /* ---------- VISOR ---------- */
 .visor{position:fixed;inset:0;z-index:95;display:grid;place-items:center;padding:24px;background:rgba(10,7,6,.94);opacity:0;pointer-events:none;transition:opacity .4s}
 .visor.abierto{opacity:1;pointer-events:auto}
-.visor figure{display:grid;gap:14px;justify-items:center;transform:translateY(20px) scale(.97);transition:transform .6s var(--ease)}
+.visor figure{display:grid;gap:14px;justify-items:center;transform:translateY(20px) rotate(-2deg) scale(.95);transition:transform .6s var(--ease)}
 .visor.abierto figure{transform:none}
 .visor img{max-height:82svh;max-width:min(92vw,700px);width:auto;height:auto;border-radius:12px;box-shadow:0 0 0 6px var(--crema)}
 .visor figcaption{font-family:"Caveat Brush";font-size:28px;text-align:center}
 .visor .cerrar{position:absolute;top:18px;right:18px;width:48px;height:48px;border-radius:50%;border:1.5px solid var(--crema);font-size:22px}
 
-.js [data-aparece]{opacity:0;transform:translateY(40px)}
+.js [data-entra]{opacity:0}
 
 @media (max-width:980px){
-  .nav a:not(.btn){display:none}
-  .portada .rejilla,.encuentro .rejilla,.horario-s .rejilla,.visita .rejilla{grid-template-columns:1fr;gap:48px}
-  .abanico{height:520px;max-width:560px;width:100%;margin-inline:auto}
-  .capas{height:600px;max-width:560px}
-  .lista{grid-template-columns:1fr}
-  .carta .cabeza{grid-template-columns:1fr}
+  .invita .rejilla{grid-template-columns:1fr}
+  .mesa{height:520px;max-width:600px;width:100%;margin-inline:auto}
+  .tickets{grid-template-columns:1fr;gap:30px}
+  .ticket:nth-child(even){margin-top:0}
+  .dias{grid-template-columns:repeat(4,minmax(0,1fr))}
 }
 @media (max-width:700px){
   body{font-size:16px}
-  .cab .wrap{height:64px}
-  .cab .marca{font-size:34px}
-  .nav .btn{padding:11px 18px}
-  .portada{padding:100px 0 50px}
-  .portada h1 .marca{font-size:clamp(84px,26vw,120px)}
-  .lema{font-size:13px;letter-spacing:.14em}
-  .acciones .btn{flex:1 1 auto;justify-content:center}
-  .abanico{height:400px}
-  .sello{width:104px;height:104px;font-size:20px}
+  .logo-fijo{top:10px;left:12px;font-size:28px}
+  .pildora{bottom:12px;width:calc(100% - 24px);justify-content:space-between}
+  .pildora a{padding:10px 11px;font-size:13px;letter-spacing:.06em}
+  .invita{padding:84px 0 100px}
+  .quedamos{font-size:clamp(56px,17vw,80px)}
+  .tarjeta{padding:4px 18px}
+  .tarjeta .fila{grid-template-columns:74px 1fr;gap:10px}
+  .mesa{height:420px}
+  .naipe{width:48%}
   .titulo{font-size:clamp(38px,11vw,54px)}
-  .encuentro,.escaparate,.carta,.horario-s{padding:84px 0}
-  .capas{height:470px}
-  .pizarra{padding:20px;border-width:8px}
-  .pizarra li{font-size:24px}
-  .carril{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
-  .carril::-webkit-scrollbar{display:none}
-  .tira{gap:20px;padding-left:16px}
-  .plato-cartel{width:72vw;scroll-snap-align:center}
-  .hoja-carta{padding:8px 20px 20px}
-  .carta::before{width:300px;height:300px;right:-170px;top:-120px}
-  .tablon{padding:30px 20px 24px}
-  .dias li{font-size:16px;gap:10px;letter-spacing:.08em}
-  .ficha{padding:26px 22px}
-  .visita{padding-bottom:84px}
+  .comanda,.pila,.manifiesto,.semana{padding:80px 0}
+  .ticket{padding:22px 18px 36px}
+  .carta-tapa{grid-template-columns:1fr;grid-template-rows:1fr auto;gap:16px;padding:18px;height:76vh;top:9vh;text-align:center}
+  .carta-tapa .foto{justify-content:center;min-height:0;overflow:hidden}
+  .carta-tapa img{max-width:100%;height:auto;max-height:100%;width:auto;object-fit:contain}
+  .carta-tapa h3{font-size:30px;margin:2px 0 10px}
+  .carta-tapa .num{font-size:28px}
+  .carta-tapa .precio{font-size:26px}
+  .carta-tapa p{display:none}
+  .pizarra span{font-size:22px;padding:6px 14px;border-width:5px}
+  .dias{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dia{min-height:0;flex-direction:row;align-items:center;padding:16px}
+  .dia.hoy .nom::after{display:inline;margin-left:6px}
+  .dia .h{font-size:20px;text-align:right}
+  .encuentro{height:auto;min-height:0;display:flex;flex-direction:column}
+  .encuentro iframe{position:relative;height:340px}
+  .encuentro .ticket-final{position:relative;left:auto;top:auto;transform:rotate(-1.5deg);margin:-60px 16px 0;width:auto}
 }
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="progreso" aria-hidden="true"></div>
 
-<div class="telon" aria-hidden="true">
-  <div class="hoja a"></div><div class="hoja b"></div>
-  <div class="cartel">
-    <span class="marca-sub">Bar</span>
-    <div class="marca" data-letras>La<span class="r">K</span>e<span class="r">D</span>ada</div>
-    <span class="marca-sub">Aquí empieza la keDada</span>
-  </div>
-</div>
-
-<header class="cab">
-  <div class="wrap">
-    <a href="#inicio" class="marca" aria-label="La KeDada, inicio">La<span class="r">K</span>e<span class="r">D</span>ada</a>
-    <nav class="nav" aria-label="Principal">
-      <a href="#bar">El bar</a>
-      <a href="#tapas">Tapas</a>
-      <a href="#horario">Horario</a>
-      <a href="#visita">Cómo llegar</a>
-      <a class="btn btn-rojo iman" href="#carta">Menú</a>
-    </nav>
-  </div>
-</header>
+<a href="#quedamos" class="logo-fijo marca" aria-label="La KeDada, inicio">La<span class="r">K</span>e<span class="r">D</span>ada</a>
+<nav class="pildora" aria-label="Principal">
+  <a href="#tapas">Tapas</a>
+  <a href="#semana">Horario</a>
+  <a href="#encuentro">Llegar</a>
+  <a class="menu" href="#carta">Menú</a>
+</nav>
 
 <main>
-<section class="portada" id="inicio">
-  <div class="luces" aria-hidden="true"><i style="width:180px;height:180px;left:72%;top:8%"></i><i style="width:90px;height:90px;left:88%;top:40%"></i><i style="width:120px;height:120px;left:58%;top:70%"></i><i style="width:70px;height:70px;left:8%;top:18%"></i></div>
+<!-- 1. LA INVITACIÓN -->
+<section class="invita" id="quedamos">
   <div class="wrap rejilla">
     <div>
-      <div class="estado" id="estado"><i></i><span>Abre todos los días menos los miércoles</span></div>
-      <h1 aria-label="Bar La KeDada"><span class="marca-sub">Bar · Mota del Cuervo</span><span class="marca">La<span class="r">K</span>e<span class="r">D</span>ada</span></h1>
-      <div class="lema">Tapas<i>•</i>Buena compañía<i>•</i>Siempre es un buen momento</div>
-      <p class="lead">Más que una tapa, <em>un punto de encuentro.</em></p>
-      <div class="acciones">
-        <a class="btn btn-rojo iman" href="#carta">Ver el menú</a>
-        <a class="btn btn-linea iman" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5019067,-2.8705493" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+      <h1><span class="quedamos" aria-label="¿Quedamos?" data-letras>¿Quedamos<span class="q">?</span></span></h1>
+      <p class="sub">Aquí empieza la keDada.</p>
+      <div class="tarjeta" id="tarjeta">
+        <div class="fila"><span class="cond">Qué</span><div><b>Tapas, cañas y vermut</b><br>en el bar La KeDada</div></div>
+        <div class="fila"><span class="cond">Cuándo</span><div><b id="cuando"><span class="punto"></span>Todos los días menos los miércoles</b><br><span id="cuando2">Desde las 16:00 (sábados y domingos, desde las 12:00)</span></div></div>
+        <div class="fila"><span class="cond">Dónde</span><div><b>Plaza de la Tercia, 3</b><br>Mota del Cuervo · <a href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5019067,-2.8705493" target="_blank" rel="noopener noreferrer">Cómo llegar</a></div></div>
       </div>
     </div>
-    <div class="abanico" aria-label="Algunas tapas de La KeDada">
-      <button class="cartel-foto c1" data-foto="img/champinones.jpg" data-pie="Champiñones al ajillo · 6,50 €"><img src="img/champinones.jpg" alt="Champiñones al ajillo"></button>
-      <button class="cartel-foto c2" data-foto="img/aperitivo.jpg" data-pie="Aperitivo con buen ambiente"><img src="img/aperitivo.jpg" alt="Aperitivo con dos cañas"></button>
-      <button class="cartel-foto c3" data-foto="img/tosta-jamon.jpg" data-pie="Tosta de jamón con tomate · 6,90 €"><img src="img/tosta-jamon.jpg" alt="Tosta de jamón con tomate"></button>
-      <div class="sello">Plaza de<br>la Tercia, 3<small>MOTA DEL CUERVO</small></div>
+    <div class="mesa" id="mesa" aria-label="Carteles de tapas de La KeDada; se pueden mover">
+      <div class="pista">↔ mueve las tapas</div>
     </div>
   </div>
 </section>
 
-<div class="banda" aria-hidden="true"><div class="pista">
-  <span>Tapas · <b>Amigos</b> · Vermut · <b>Buena vida</b> · Buen tapeo · <b>Mejores momentos</b> ·&nbsp;</span>
-  <span>Tapas · <b>Amigos</b> · Vermut · <b>Buena vida</b> · Buen tapeo · <b>Mejores momentos</b> ·&nbsp;</span>
-</div></div>
-
-<section class="encuentro" id="bar">
-  <div class="wrap rejilla">
-    <div>
-      <div class="eti">El bar</div>
-      <h2 class="titulo" data-palabras>Aquí empieza <span class="pincel">la keDada</span></h2>
-      <p class="txt" data-aparece>«Se acabó la espera.» La KeDada abrió sus puertas en la Plaza de la Tercia de Mota del Cuervo: un bar de tapas para quedar, picar algo y alargar la sobremesa. Buena compañía y buenos momentos.</p>
-      <div class="pizarra" data-aparece>
-        <ul><li>Tapas</li><li>Amigos</li><li>Vermut</li><li>Buena vida</li></ul>
-      </div>
-    </div>
-    <div class="capas">
-      <figure class="f1" data-par="-50" data-foto="img/mesa-reservada.jpg" data-pie="Tu próxima kedada merece mesa reservada"><img src="img/mesa-reservada.jpg" alt="Cartel de La KeDada: tu próxima kedada merece mesa reservada" loading="lazy"></figure>
-      <figure class="f2" data-par="60" data-foto="img/aperitivo-montaditos.jpg" data-pie="El aperitivo que abre el hambre"><img src="img/aperitivo-montaditos.jpg" alt="Cartel de La KeDada: el aperitivo que abre el hambre" loading="lazy"></figure>
-      <div class="nota" data-par="100">Reserva tu mesa<small>Escríbeles por Instagram: @bar.lakedada</small></div>
-    </div>
-  </div>
-</section>
-
-<section class="escaparate" id="tapas">
-  <div class="wrap cabeza">
-    <div>
-      <div class="eti">De la pizarra</div>
-      <h2 class="titulo" data-palabras>Tapas <span class="rojo">que unen</span></h2>
-    </div>
-    <p data-aparece>Los platos que La KeDada enseña en su Instagram, con su precio. Pulsa uno para verlo entero.</p>
-  </div>
-  <div class="carril"><div class="tira" id="tira"></div></div>
-</section>
-
-<section class="carta" id="carta">
+<!-- 2. LA COMANDA -->
+<section class="comanda" id="carta">
   <div class="wrap">
     <div class="cabeza">
       <div>
         <div class="eti">Menú</div>
-        <h2 class="titulo" data-palabras>La carta <span class="pincel">de la casa</span></h2>
+        <h2 class="titulo" data-linea>Pide <span class="pincel">la ronda</span></h2>
       </div>
-      <p data-aparece>Precios con IVA, tal como los publica el bar. Los platos con foto llevan el botón «Ver foto».</p>
+      <p>La carta de La KeDada con sus precios, tal como la publica el bar. Los platos con foto llevan «Ver foto».</p>
     </div>
-    <div class="pestanas" role="tablist" aria-label="Secciones de la carta" id="pestanas"></div>
-    <div class="hoja-carta" role="tabpanel"><h3 id="titSec"></h3><div class="lista" id="lista"></div></div>
-    <p class="aviso">¿Prefieres verla como la publica el bar? <button data-foto="img/carta.jpg" data-pie="Carta de La KeDada">Ver la carta original</button></p>
+    <div class="tickets" id="tickets"></div>
+    <p class="aviso">¿La prefieres como la publica el bar? <button data-foto="img/carta.jpg" data-pie="Carta de La KeDada">Ver la carta original</button></p>
   </div>
 </section>
 
-<section class="horario-s" id="horario">
-  <div class="wrap rejilla">
-    <div>
-      <div class="eti">Cuándo venir</div>
-      <h2 class="titulo" data-palabras>Siempre es <span class="pincel">un buen momento</span></h2>
-      <p class="txt" data-aparece>Todas las tardes desde las 16:00, y los fines de semana desde el mediodía. Los miércoles, descanso. Festivos de 12:00 a 18:00.</p>
+<!-- 3. LA PILA DE TAPAS -->
+<section class="pila" id="tapas">
+  <div class="wrap">
+    <div class="cabeza">
+      <div class="eti">De la pizarra</div>
+      <h2 class="titulo" data-linea>Tapas <span class="rojo">que unen</span></h2>
+      <p>Una encima de otra, como llegan a la mesa. Pulsa una para verla entera.</p>
     </div>
-    <div class="tablon" data-aparece>
-      <h3>HORARIO</h3>
-      <span class="marca-sub">Bar La KeDada</span>
-      <ul class="dias" id="dias"></ul>
-    </div>
+    <div class="mazo" id="mazo"></div>
   </div>
 </section>
 
-<section class="visita" id="visita">
-  <div class="wrap rejilla">
-    <div class="ficha" data-aparece>
-      <div class="eti" style="margin:0">Visítanos</div>
-      <div><small>Dirección</small><b>Plaza de la Tercia, 3</b><br>16630 Mota del Cuervo (Cuenca)</div>
-      <div><small>Reservas y dudas</small><b>Instagram @bar.lakedada</b></div>
-      <div class="acciones">
-        <a class="btn btn-rojo iman" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5019067,-2.8705493" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
-        <a class="btn btn-linea iman" href="https://www.instagram.com/bar.lakedada/" target="_blank" rel="noopener noreferrer">Instagram</a>
+<!-- 4. MANIFIESTO -->
+<section class="manifiesto" id="bar">
+  <div class="wrap">
+    <div class="eti">El bar</div>
+    <p class="grande" id="manifiesto">Se acabó la espera. En la Plaza de la Tercia ha abierto La KeDada: <span class="acento">más que una tapa,</span> un punto de encuentro. Buena compañía, buenos momentos y una mesa para alargar la tarde.</p>
+    <div class="pizarra" aria-label="Tapas, amigos, vermut, buena vida"><span>Tapas</span><span>Amigos</span><span>Vermut</span><span>Buena vida</span></div>
+  </div>
+</section>
+
+<!-- 5. LA SEMANA -->
+<section class="semana" id="semana">
+  <div class="wrap">
+    <div class="cabeza">
+      <div>
+        <div class="eti">Horario</div>
+        <h2 class="titulo" data-linea>Siempre es <span class="pincel">un buen momento</span></h2>
       </div>
+      <p>Miércoles, descanso. El resto de la semana, la puerta abierta por la tarde y los fines de semana desde el mediodía.</p>
     </div>
-    <div class="mapa" data-aparece><iframe title="Mapa de La KeDada" src="https://www.google.com/maps?q=39.5019067,-2.8705493&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe></div>
+    <ul class="dias" id="dias"></ul>
+  </div>
+</section>
+
+<!-- 6. EL PUNTO DE ENCUENTRO -->
+<section class="encuentro" id="encuentro">
+  <iframe title="Mapa de La KeDada" src="https://www.google.com/maps?q=39.5019067,-2.8705493&amp;z=17&amp;output=embed" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" sandbox="allow-scripts allow-same-origin allow-popups"></iframe>
+  <div class="ticket-final" data-entra>
+    <div class="marca">La<span class="r">K</span>e<span class="r">D</span>ada</div>
+    <h2>Te esperamos</h2>
+    <p><b>Plaza de la Tercia, 3</b><br>16630 Mota del Cuervo (Cuenca)<br>Reservas por Instagram: @bar.lakedada</p>
+    <div class="acciones">
+      <a class="btn btn-rojo" href="https://www.google.com/maps/dir/?api=1&amp;destination=39.5019067,-2.8705493" target="_blank" rel="noopener noreferrer">Cómo llegar</a>
+      <a class="btn btn-linea" href="https://www.instagram.com/bar.lakedada/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    </div>
   </div>
 </section>
 </main>
 
-<footer class="pie-web">
-  <div class="wrap">
-    <a href="#inicio" class="marca" aria-label="Volver arriba">La<span class="r">K</span>e<span class="r">D</span>ada</a>
-    <div class="lema">Tapas<i>•</i>Buena compañía<i>•</i>Siempre es un buen momento</div>
-    <nav aria-label="Pie"><a href="#carta">Menú</a><a href="#tapas">Tapas</a><a href="#horario">Horario</a><a href="https://www.instagram.com/bar.lakedada/" target="_blank" rel="noopener noreferrer">@bar.lakedada</a></nav>
-    <p>Bar La KeDada · Plaza de la Tercia, 3 · Mota del Cuervo · Web hecha por Bramia</p>
-  </div>
-</footer>
+<footer class="pie">Bar La KeDada · Tapas · Buena compañía · Siempre es un buen momento · <a href="https://www.instagram.com/bar.lakedada/" target="_blank" rel="noopener noreferrer">@bar.lakedada</a> · Web hecha por Bramia</footer>
 
 <div class="visor" id="visor" role="dialog" aria-modal="true" aria-label="Foto" hidden>
   <button class="cerrar" aria-label="Cerrar">✕</button>
@@ -401,11 +318,12 @@ if (window.top !== window.self) { window.top.location = window.self.location; }
   "use strict";
   var reducido = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hayGsap = !!(window.gsap && window.ScrollTrigger);
-  if (reducido || !hayGsap) document.body.classList.add("reducido"); else document.documentElement.classList.add("js");
+  var anima = hayGsap && !reducido;
+  if (anima) document.documentElement.classList.add("js");
 
-  /* ---- Carta real (Instagram de La KeDada) ---- */
+  /* ---- Datos reales (Instagram de La KeDada) ---- */
   var CARTA = [
-    { nombre: "Entrantes fríos", t: "Entrantes <b>fríos</b>", platos: [
+    { nombre: "Entrantes fríos", platos: [
       { n: "Jamón ibérico 100% bellota", p: "21,50 €", d: "Etiqueta negra · cortado a cuchillo" },
       { n: "Queso manchego D.O.", p: "9,50 €" },
       { n: "Chorizo ibérico", p: "7,70 €" },
@@ -415,190 +333,187 @@ if (window.top !== window.self) { window.top.location = window.self.location; }
       { n: "Tomate aliñado", p: "9,10 €" },
       { n: "Tomate aliñado con ventresca", p: "13,80 €" }
     ] },
-    { nombre: "Calientes del campo", t: "Calientes <b>del campo</b>", platos: [
+    { nombre: "Calientes del campo", platos: [
       { n: "Tortilla de patata entera + barra de pan", p: "26,00 €", d: "Por encargo", foto: "img/tortilla.jpg" },
       { n: "Pincho de tortilla", p: "4,50 €", foto: "img/tortilla.jpg" },
       { n: "Champiñones al ajillo", p: "6,50 €", foto: "img/champinones.jpg" },
       { n: "Espárragos trigueros a la plancha", p: "7,90 €" },
       { n: "Berenjenas fritas con miel", p: "9,90 €" }
     ] },
-    { nombre: "Calientes del mar", t: "Calientes <b>del mar</b>", platos: [
+    { nombre: "Calientes del mar", platos: [
       { n: "Calamares a la andaluza", p: "12,90 €" },
       { n: "Chipirones a la plancha", p: "13,20 €", foto: "img/chipirones.jpg" },
       { n: "Gamba blanca a la plancha", p: "27,70 €" },
       { n: "Delicias de merluza", p: "11,90 €", d: "Con menestra de verdura" }
     ] },
-    { nombre: "Tostas y platos", t: "Tostas <b>y platos</b>", platos: [
+    { nombre: "Tostas y platos", platos: [
       { n: "Tosta de jamón con tomate", p: "6,90 €", foto: "img/tosta-jamon.jpg" },
       { n: "Tosta de matrimonio", p: "8,50 €", d: "Con rodajas de tomate", foto: "img/tosta-matrimonio.jpg" },
       { n: "Chuletitas de cordero lechal", p: "21,90 €", d: "Con patatas fritas y pimientos de padrón", foto: "img/chuletitas.jpg" }
     ] }
   ];
-  var DESTACADOS = [
-    ["img/tosta-jamon.jpg", "Tosta de jamón con tomate", "6,90 €"],
-    ["img/champinones.jpg", "Champiñones al ajillo", "6,50 €"],
-    ["img/chipirones.jpg", "Chipirones a la plancha", "13,20 €"],
-    ["img/chuletitas.jpg", "Chuletitas de cordero lechal", "21,90 €"],
-    ["img/tosta-matrimonio.jpg", "Tosta de matrimonio", "8,50 €"],
-    ["img/tortilla.jpg", "Tortilla de patata", "Pincho 4,50 €"]
+  var TAPAS = [
+    ["img/tosta-jamon.jpg", "Tosta de jamón con tomate", "6,90 €", "Pan tostado, tomate y jamón."],
+    ["img/champinones.jpg", "Champiñones al ajillo", "6,50 €", "Un clásico que siempre apetece."],
+    ["img/chipirones.jpg", "Chipirones a la plancha", "13,20 €", "Sabor de mar, sencillo y en su punto."],
+    ["img/chuletitas.jpg", "Chuletitas de cordero lechal", "21,90 €", "Con patatas fritas y pimientos de padrón."],
+    ["img/tosta-matrimonio.jpg", "Tosta de matrimonio", "8,50 €", "Con rodajas de tomate."],
+    ["img/tortilla.jpg", "Tortilla de patata", "Pincho 4,50 €", "Entera con barra de pan, 26 €, por encargo."]
   ];
+  var MESA = ["img/aperitivo.jpg", "img/champinones.jpg", "img/mesa-reservada.jpg", "img/aperitivo-montaditos.jpg", "img/tosta-jamon.jpg"];
 
-  /* ---- Escaparate ---- */
-  var tira = document.getElementById("tira");
-  DESTACADOS.forEach(function (x) {
-    var b = document.createElement("button");
-    b.className = "plato-cartel"; b.setAttribute("data-foto", x[0]); b.setAttribute("data-pie", x[1] + " · " + x[2]);
-    b.innerHTML = '<div class="marco"><img loading="lazy" alt=""></div><h3></h3><span class="precio"></span>';
-    b.querySelector("img").src = x[0]; b.querySelector("img").alt = x[1];
-    b.querySelector("h3").textContent = x[1]; b.querySelector(".precio").textContent = x[2];
-    tira.appendChild(b);
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+
+  /* ---- 1. Mesa: carteles repartidos y arrastrables ---- */
+  var mesa = document.getElementById("mesa");
+  var POS = [[2, 6, -10], [52, 0, 7], [28, 22, -3], [6, 46, 6], [54, 44, -8]];
+  MESA.forEach(function (src, i) {
+    var n = el("div", "naipe"); var im = el("img"); im.src = src; im.alt = "Cartel de La KeDada"; im.draggable = false;
+    n.appendChild(im); n.style.left = POS[i][0] + "%"; n.style.top = POS[i][1] + "%"; n.style.zIndex = i + 1;
+    n.dataset.rot = POS[i][2]; n.style.transform = "rotate(" + POS[i][2] + "deg)";
+    n.setAttribute("data-foto", src); n.setAttribute("data-pie", "Del Instagram de La KeDada");
+    mesa.appendChild(n);
+  });
+  var z = 10;
+  mesa.querySelectorAll(".naipe").forEach(function (n) {
+    var sx, sy, ox = 0, oy = 0, movido = false, activo = false;
+    n.addEventListener("pointerdown", function (e) { activo = true; movido = false; sx = e.clientX; sy = e.clientY; n.style.zIndex = ++z; n.setPointerCapture(e.pointerId); if (anima) gsap.to(n, { scale: 1.06, rotate: 0, duration: .25 }); });
+    n.addEventListener("pointermove", function (e) {
+      if (!activo) return; var dx = e.clientX - sx, dy = e.clientY - sy;
+      if (Math.abs(dx) + Math.abs(dy) > 6) movido = true;
+      if (anima) gsap.set(n, { x: ox + dx, y: oy + dy }); else n.style.translate = (ox + dx) + "px " + (oy + dy) + "px";
+    });
+    function soltar(e) {
+      if (!activo) return; activo = false; ox += e.clientX - sx; oy += e.clientY - sy;
+      if (anima) gsap.to(n, { scale: 1, rotate: (Math.random() * 14 - 7), duration: .5, ease: "back.out(2)" });
+      if (movido) { n.dataset.arrastre = "1"; setTimeout(function () { delete n.dataset.arrastre; }, 50); }
+    }
+    n.addEventListener("pointerup", soltar); n.addEventListener("pointercancel", soltar);
   });
 
-  /* ---- Horario y abierto/cerrado ---- */
+  /* ---- 2. Comanda: un ticket por sección ---- */
+  var tk = document.getElementById("tickets");
+  CARTA.forEach(function (s) {
+    var t = el("article", "ticket");
+    var cab = el("div", "cab");
+    cab.innerHTML = '<div class="marca">La<span class="r">K</span>e<span class="r">D</span>ada</div>';
+    cab.appendChild(el("h3", null, s.nombre)); cab.appendChild(el("small", null, "Plaza de la Tercia, 3 · Mota del Cuervo"));
+    t.appendChild(cab);
+    s.platos.forEach(function (p) {
+      var l = el("div", "linea"); l.appendChild(el("h4", null, p.n)); l.appendChild(el("span", "precio", p.p));
+      if (p.d) l.appendChild(el("p", null, p.d));
+      if (p.foto) { var b = el("button", "verfoto", "Ver foto"); b.setAttribute("data-foto", p.foto); b.setAttribute("data-pie", p.n + " · " + p.p); l.appendChild(b); }
+      t.appendChild(l);
+    });
+    var tot = el("div", "total"); tot.appendChild(el("span", null, s.platos.length + " platos")); tot.appendChild(el("span", null, "IVA incluido")); t.appendChild(tot);
+    tk.appendChild(t);
+  });
+
+  /* ---- 3. Pila de tapas ---- */
+  var mazo = document.getElementById("mazo");
+  TAPAS.forEach(function (x, i) {
+    var c = el("article", "carta-tapa"); c.setAttribute("data-foto", x[0]); c.setAttribute("data-pie", x[1] + " · " + x[2]);
+    var f = el("div", "foto"); var im = el("img"); im.src = x[0]; im.alt = x[1]; im.loading = "lazy"; f.appendChild(im);
+    var tx = el("div"); tx.appendChild(el("div", "num", "nº " + (i + 1))); tx.appendChild(el("h3", null, x[1])); tx.appendChild(el("span", "precio", x[2])); tx.appendChild(el("p", null, x[3]));
+    c.appendChild(f); c.appendChild(tx); mazo.appendChild(c);
+  });
+
+  /* ---- 5. Semana ---- */
   var DIAS = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
   var H = { 0: [12, 24], 1: [16, 24], 2: [16, 24], 3: null, 4: [16, 24], 5: [16, 25.5], 6: [12, 25.5] };
-  function fmt(h) { h = h % 24; var m = Math.round((h % 1) * 60); return String(Math.floor(h)).padStart(2, "0") + ":" + String(m).padStart(2, "0"); }
+  function fmt(h) { h = h % 24; return String(Math.floor(h)).padStart(2, "0") + ":" + String(Math.round((h % 1) * 60)).padStart(2, "0"); }
   var ahora = new Date(), hoy = ahora.getDay(), hora = ahora.getHours() + ahora.getMinutes() / 60;
   var ul = document.getElementById("dias");
   [1, 2, 3, 4, 5, 6, 0].forEach(function (d) {
-    var li = document.createElement("li"); if (!H[d]) li.className = "cerrado"; if (d === hoy) li.classList.add("hoy");
-    li.innerHTML = "<span>" + DIAS[d] + "</span><span>" + (H[d] ? fmt(H[d][0]) + " – " + fmt(H[d][1]) : "Cerrado") + "</span>";
-    ul.appendChild(li);
+    var li = el("li", "dia" + (H[d] ? "" : " cerrado") + (d === hoy ? " hoy" : ""));
+    li.appendChild(el("span", "nom", DIAS[d]));
+    var h = el("span", "h");
+    if (H[d]) { h.innerHTML = fmt(H[d][0]) + "<small>a</small>" + fmt(H[d][1]); } else h.textContent = "Cerrado";
+    li.appendChild(h); ul.appendChild(li);
   });
-  var fest = document.createElement("li"); fest.innerHTML = "<span>Festivos</span><span>12:00 – 18:00</span>"; ul.appendChild(fest);
-  var ayer = (hoy + 6) % 7, est = document.getElementById("estado"), txt = est.querySelector("span");
+  var fe = el("li", "dia fest"); fe.appendChild(el("span", "nom", "Festivos")); var fh = el("span", "h"); fh.innerHTML = "12:00<small>a</small>18:00"; fe.appendChild(fh); ul.appendChild(fe);
+  var ayer = (hoy + 6) % 7, cuando = document.getElementById("cuando"), cuando2 = document.getElementById("cuando2");
   var abierto = (H[hoy] && hora >= H[hoy][0] && hora < H[hoy][1]) || (H[ayer] && H[ayer][1] > 24 && hora < H[ayer][1] - 24);
-  if (abierto) { est.classList.add("abierto"); var cierre = (H[hoy] && hora >= H[hoy][0]) ? H[hoy][1] : H[ayer][1]; txt.textContent = "Abierto ahora · hasta las " + fmt(cierre); }
-  else if (H[hoy] && hora < H[hoy][0]) txt.textContent = "Cerrado ahora · hoy abre a las " + fmt(H[hoy][0]);
-  else { var k = 1; while (!H[(hoy + k) % 7]) k++; var dd = (hoy + k) % 7; txt.textContent = "Cerrado · abre " + (k === 1 ? "mañana" : "el " + DIAS[dd].toLowerCase()) + " a las " + fmt(H[dd][0]); }
+  if (abierto) { var cierre = (H[hoy] && hora >= H[hoy][0]) ? H[hoy][1] : H[ayer][1]; cuando.innerHTML = '<span class="punto on"></span>Ahora mismo: abierto'; cuando2.textContent = "Hoy hasta las " + fmt(cierre); }
+  else if (H[hoy] && hora < H[hoy][0]) { cuando.innerHTML = '<span class="punto"></span>Hoy, a partir de las ' + fmt(H[hoy][0]); cuando2.textContent = "Hasta las " + fmt(H[hoy][1]); }
+  else { var k = 1; while (!H[(hoy + k) % 7]) k++; var dd = (hoy + k) % 7; cuando.innerHTML = '<span class="punto"></span>' + (k === 1 ? "Mañana" : "El " + DIAS[dd].toLowerCase()) + ", a partir de las " + fmt(H[dd][0]); cuando2.textContent = "Hoy está cerrado"; }
 
   /* ---- Visor (foto entera) ---- */
   var visor = document.getElementById("visor"), vImg = visor.querySelector("img"), vPie = visor.querySelector("figcaption"), ultimo = null;
   function abrir(src, pie, o) { ultimo = o; vImg.src = src; vImg.alt = pie; vPie.textContent = pie; visor.hidden = false; requestAnimationFrame(function () { visor.classList.add("abierto"); }); visor.querySelector(".cerrar").focus(); if (window.__lenis) window.__lenis.stop(); }
-  function cerrar() { visor.classList.remove("abierto"); setTimeout(function () { visor.hidden = true; }, 400); if (window.__lenis) window.__lenis.start(); if (ultimo) ultimo.focus(); }
+  function cerrar() { visor.classList.remove("abierto"); setTimeout(function () { visor.hidden = true; }, 400); if (window.__lenis) window.__lenis.start(); if (ultimo && ultimo.focus) ultimo.focus(); }
   visor.addEventListener("click", function (e) { if (e.target === visor || e.target.closest(".cerrar")) cerrar(); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !visor.hidden) cerrar(); });
-  document.addEventListener("click", function (e) { var t = e.target.closest("[data-foto]"); if (t) { e.preventDefault(); abrir(t.getAttribute("data-foto"), t.getAttribute("data-pie") || "", t); } });
+  document.addEventListener("click", function (e) { var t = e.target.closest("[data-foto]"); if (t && !t.dataset.arrastre) { e.preventDefault(); abrir(t.getAttribute("data-foto"), t.getAttribute("data-pie") || "", t); } });
 
-  /* ---- Carta con pestañas ---- */
-  var pest = document.getElementById("pestanas"), lista = document.getElementById("lista"), tit = document.getElementById("titSec");
-  function pintar(i) {
-    pest.querySelectorAll(".pestana").forEach(function (p, j) { p.setAttribute("aria-selected", j === i ? "true" : "false"); p.tabIndex = j === i ? 0 : -1; });
-    tit.innerHTML = CARTA[i].t; lista.innerHTML = "";
-    CARTA[i].platos.forEach(function (p) {
-      var d = document.createElement("div"); d.className = "plato";
-      d.innerHTML = "<h4></h4><span class='precio'></span>" + (p.d ? "<p></p>" : "") + (p.foto ? "<button class='verfoto'>Ver foto</button>" : "");
-      d.querySelector("h4").textContent = p.n; d.querySelector(".precio").textContent = p.p;
-      if (p.d) d.querySelector("p").textContent = p.d;
-      if (p.foto) { var b = d.querySelector(".verfoto"); b.setAttribute("data-foto", p.foto); b.setAttribute("data-pie", p.n + " · " + p.p); }
-      lista.appendChild(d);
-    });
-    if (hayGsap && !reducido) gsap.from(lista.children, { y: 24, opacity: 0, duration: .55, stagger: .04, ease: "power3.out" });
-  }
-  CARTA.forEach(function (s, i) {
-    var b = document.createElement("button"); b.className = "pestana"; b.setAttribute("role", "tab"); b.textContent = s.nombre;
-    b.addEventListener("click", function () { pintar(i); });
-    b.addEventListener("keydown", function (e) { var n = CARTA.length, j = e.key === "ArrowRight" ? (i + 1) % n : e.key === "ArrowLeft" ? (i - 1 + n) % n : -1; if (j > -1) { pintar(j); pest.children[j].focus(); } });
-    pest.appendChild(b);
-  });
-  pintar(0);
+  /* ---- Píldora: sección activa ---- */
+  var enlaces = document.querySelectorAll(".pildora a");
 
-  if (!hayGsap || reducido) return;
+  if (!anima) return;
 
-  /* ================= ANIMACIONES ================= */
+  /* ================= MOVIMIENTO ================= */
   gsap.registerPlugin(ScrollTrigger);
   var lenis = null;
   if (window.Lenis) {
-    lenis = new Lenis({ lerp: .1 }); window.__lenis = lenis;
+    lenis = new Lenis({ lerp: .09 }); window.__lenis = lenis;
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(function (t) { lenis.raf(t * 1000); }); gsap.ticker.lagSmoothing(0);
     document.querySelectorAll('a[href^="#"]').forEach(function (a) {
-      a.addEventListener("click", function (e) { var id = a.getAttribute("href"), d = id.length > 1 && document.querySelector(id); if (!d) return; e.preventDefault(); lenis.scrollTo(d, { offset: id === "#inicio" ? 0 : -70, duration: 1.4 }); });
+      a.addEventListener("click", function (e) { var d = document.querySelector(a.getAttribute("href")); if (!d) return; e.preventDefault(); lenis.scrollTo(d, { duration: 1.4 }); });
     });
   }
-
-  /* Telón: el nombre se escribe letra a letra y se abre */
-  var telon = document.querySelector(".telon"), m = telon.querySelector("[data-letras]");
-  var html = ""; m.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent.split("").forEach(function (c) { html += "<span>" + c + "</span>"; }); else html += n.outerHTML; });
-  m.innerHTML = html;
-  if (lenis) lenis.stop();
-  gsap.timeline({ onComplete: function () { telon.remove(); if (lenis) lenis.start(); } })
-    .from(m.children, { yPercent: 70, rotate: function (i) { return i % 2 ? 8 : -8; }, opacity: 0, duration: .7, stagger: .07, ease: "back.out(2)" })
-    .from(telon.querySelectorAll(".marca-sub"), { opacity: 0, y: 10, duration: .4, stagger: .1 }, "-=.3")
-    .to(telon.querySelector(".cartel"), { opacity: 0, scale: .94, duration: .45, ease: "power2.in" }, "+=.45")
-    .to(telon.querySelector(".hoja.a"), { xPercent: -101, duration: 1, ease: "expo.inOut" }, "<.15")
-    .to(telon.querySelector(".hoja.b"), { xPercent: 101, duration: 1, ease: "expo.inOut" }, "<")
-    .from(".portada h1 .marca", { y: 90, opacity: 0, duration: 1.1, ease: "expo.out" }, "<.45")
-    .from(".portada .marca-sub, .portada .estado, .portada .lema, .portada .lead, .portada .acciones .btn", { y: 26, opacity: 0, duration: .8, stagger: .07, ease: "power3.out" }, "<.1")
-    .from(".cartel-foto", { y: 160, opacity: 0, rotate: 0, duration: 1.2, stagger: .12, ease: "expo.out" }, "<.1")
-    .from(".sello", { scale: 0, rotate: -60, duration: .8, ease: "back.out(2)" }, "<.5")
-    .from(".cab", { yPercent: -100, duration: .8, ease: "power3.out" }, "<");
-
-  ScrollTrigger.create({ start: 80, onUpdate: function (s) { document.querySelector(".cab").classList.toggle("solida", s.scroll() > 80); } });
-  gsap.to(".progreso", { scaleX: 1, ease: "none", scrollTrigger: { start: 0, end: "max", scrub: .3 } });
-
-  /* Carteles de portada: se separan al bajar y siguen al ratón */
-  gsap.to(".cartel-foto.c1", { x: -40, y: 60, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".cartel-foto.c3", { x: 40, y: 100, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
-  gsap.to(".cartel-foto.c2", { y: -40, ease: "none", scrollTrigger: { trigger: ".portada", start: "top top", end: "bottom top", scrub: true } });
-  if (window.matchMedia("(pointer:fine)").matches) {
-    var ab = document.querySelector(".abanico");
-    ab.addEventListener("mousemove", function (e) {
-      var r = ab.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
-      gsap.to(".cartel-foto", { xPercent: function (i) { return x * (6 + i * 4); }, yPercent: function (i) { return y * (4 + i * 3); }, duration: .8, ease: "power3.out" });
-    });
-  }
-  gsap.utils.toArray(".luces i").forEach(function (l) { gsap.to(l, { opacity: .35, scale: .8, duration: 2 + Math.random() * 2, repeat: -1, yoyo: true, ease: "sine.inOut" }); });
-
-  /* Títulos palabra a palabra */
-  document.querySelectorAll("[data-palabras]").forEach(function (h) {
-    var partes = [];
-    h.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(function (w) { if (w.trim()) partes.push({ t: w }); else if (w) partes.push({ sp: 1 }); }); else partes.push({ el: n }); });
-    h.innerHTML = "";
-    partes.forEach(function (p) {
-      if (p.sp) { h.appendChild(document.createTextNode(" ")); return; }
-      var w = document.createElement("span"); w.className = "w"; var i = document.createElement("span");
-      if (p.el) i.appendChild(p.el); else i.textContent = p.t; w.appendChild(i); h.appendChild(w);
-    });
-    gsap.from(h.querySelectorAll(".w>span"), { yPercent: 110, rotate: 4, duration: 1, ease: "expo.out", stagger: .08, scrollTrigger: { trigger: h, start: "top 85%" } });
+  enlaces.forEach(function (a) {
+    var s = document.querySelector(a.getAttribute("href")); if (!s) return;
+    ScrollTrigger.create({ trigger: s, start: "top 50%", end: "bottom 50%", onToggle: function (st) { a.classList.toggle("activo", st.isActive && !a.classList.contains("menu")); } });
   });
-  gsap.utils.toArray("[data-aparece]").forEach(function (el) { gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" } }); });
 
-  /* Banda: se mueve sola y se acelera e inclina al bajar */
-  var pista = document.querySelector(".banda .pista"), mov = gsap.to(pista, { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
-  ScrollTrigger.create({ trigger: ".banda", start: "top bottom", end: "bottom top", onUpdate: function (s) {
-    var v = gsap.utils.clamp(-3, 3, s.getVelocity() / 600);
-    gsap.to(mov, { timeScale: 1 + Math.abs(v) * 2, duration: .3, overwrite: true }); gsap.to(pista, { skewX: -v * 3, duration: .4, overwrite: "auto" }); gsap.to(mov, { timeScale: 1, duration: 1.2, delay: .3 });
-  } });
+  /* Entrada: «¿Quedamos?» rebota letra a letra, la tarjeta se desliza y los carteles se reparten sobre la mesa */
+  var q = document.querySelector("[data-letras]"), html = "";
+  q.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent.split("").forEach(function (c) { html += "<span>" + c + "</span>"; }); else html += n.outerHTML; });
+  q.innerHTML = html;
+  var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+  tl.from(q.children, { y: -120, opacity: 0, duration: .9, stagger: .05, ease: "bounce.out" })
+    .from(".invita .sub", { opacity: 0, x: -30, duration: .6 }, "-=.4")
+    .from("#tarjeta", { y: 80, rotate: -6, opacity: 0, duration: .9, ease: "back.out(1.4)" }, "-=.3")
+    .from("#tarjeta .fila", { opacity: 0, x: -20, stagger: .1, duration: .4 }, "-=.4")
+    .from(".naipe", { x: function () { return 600; }, y: function (i) { return -300 + i * 120; }, rotate: function (i) { return 180 + i * 40; }, opacity: 0, duration: 1.1, stagger: .12, ease: "expo.out" }, .3)
+    .from(".mesa .pista", { opacity: 0, duration: .5 }, "-=.2")
+    .from(".pildora", { y: 120, duration: .8, ease: "back.out(1.6)" }, .6)
+    .from(".logo-fijo", { y: -60, opacity: 0, duration: .6 }, .5);
 
-  /* Capas con parallax */
-  gsap.utils.toArray("[data-par]").forEach(function (el) { var p = parseFloat(el.dataset.par); gsap.fromTo(el, { y: -p / 2 }, { y: p / 2, ease: "none", scrollTrigger: { trigger: el.closest("section"), start: "top bottom", end: "bottom top", scrub: true } }); });
-  gsap.from(".capas figure", { clipPath: "inset(100% 0 0 0 round 14px)", duration: 1.3, ease: "expo.inOut", stagger: .2, scrollTrigger: { trigger: ".capas", start: "top 75%" } });
-  gsap.from(".pizarra li", { opacity: 0, x: -20, duration: .5, stagger: .15, scrollTrigger: { trigger: ".pizarra", start: "top 85%" } });
-
-  /* Escaparate: carril horizontal fijado (escritorio) */
-  var mmq = gsap.matchMedia();
-  mmq.add("(min-width:701px)", function () {
-    var t = document.getElementById("tira");
-    var dist = function () { return Math.max(0, t.scrollWidth - window.innerWidth + 32); };
-    gsap.to(t, { x: function () { return -dist(); }, ease: "none", scrollTrigger: { trigger: ".escaparate", start: "top top", end: function () { return "+=" + dist(); }, pin: true, scrub: .6, invalidateOnRefresh: true } });
+  /* Títulos: se descubren de izquierda a derecha, como subrayados con rotulador */
+  gsap.utils.toArray("[data-linea]").forEach(function (h) {
+    gsap.fromTo(h, { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "power4.inOut", scrollTrigger: { trigger: h, start: "top 85%" } });
   });
-  gsap.from(".plato-cartel", { y: 80, opacity: 0, rotate: function (i) { return i % 2 ? 4 : -4; }, duration: 1, ease: "expo.out", stagger: .08, scrollTrigger: { trigger: ".escaparate", start: "top 70%" } });
 
-  /* Horario: los días entran uno tras otro */
-  gsap.from(".dias li", { opacity: 0, x: 30, duration: .5, stagger: .06, ease: "power3.out", scrollTrigger: { trigger: ".tablon", start: "top 80%" } });
+  /* Comanda: cada ticket se «imprime» de arriba abajo */
+  gsap.utils.toArray(".ticket").forEach(function (t, i) {
+    gsap.fromTo(t, { clipPath: "inset(0 0 100% 0)", y: -30 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: 1.6, ease: "steps(14)", delay: (i % 2) * .25, scrollTrigger: { trigger: t, start: "top 85%" } });
+  });
 
-  /* Pie: la marca se escribe */
-  gsap.from(".pie-web .marca", { y: 80, opacity: 0, duration: 1.1, ease: "expo.out", scrollTrigger: { trigger: ".pie-web", start: "top 80%" } });
+  /* Pila: cada carta empuja hacia atrás a la anterior */
+  var cartas = gsap.utils.toArray(".carta-tapa");
+  cartas.forEach(function (c, i) {
+    if (i === cartas.length - 1) return;
+    gsap.to(c, { scale: .9, opacity: .45, rotate: i % 2 ? 1.5 : -1.5, ease: "none", scrollTrigger: { trigger: cartas[i + 1], start: "top bottom", end: "top 12%", scrub: true } });
+  });
 
-  /* Botones magnéticos */
-  if (window.matchMedia("(pointer:fine)").matches) {
-    document.querySelectorAll(".iman").forEach(function (bt) {
-      var qx = gsap.quickTo(bt, "x", { duration: .4, ease: "power3" }), qy = gsap.quickTo(bt, "y", { duration: .4, ease: "power3" });
-      bt.addEventListener("mousemove", function (e) { var r = bt.getBoundingClientRect(); qx((e.clientX - r.left - r.width / 2) * .3); qy((e.clientY - r.top - r.height / 2) * .4); });
-      bt.addEventListener("mouseleave", function () { qx(0); qy(0); });
-    });
-  }
+  /* Manifiesto: las palabras se encienden al leer */
+  var m = document.getElementById("manifiesto"), partes = [];
+  m.childNodes.forEach(function (n) {
+    if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(function (w) { partes.push(w.trim() ? '<span class="pal">' + w + "</span>" : w); });
+    else { var cls = n.className; n.textContent.split(/(\s+)/).forEach(function (w) { partes.push(w.trim() ? '<span class="pal ' + cls + '">' + w + "</span>" : w); }); }
+  });
+  m.innerHTML = partes.join("");
+  gsap.to(m.querySelectorAll(".pal"), { opacity: 1, stagger: .1, ease: "none", scrollTrigger: { trigger: m, start: "top 75%", end: "bottom 45%", scrub: true } });
+  gsap.from(".pizarra span", { y: 40, rotate: function (i) { return i % 2 ? 10 : -10; }, opacity: 0, duration: .7, stagger: .1, ease: "back.out(2)", scrollTrigger: { trigger: ".pizarra", start: "top 90%" } });
+
+  /* Semana: los días caen como fichas de dominó */
+  gsap.from(".dia", { rotateX: -95, opacity: 0, duration: .8, stagger: .08, ease: "back.out(1.5)", scrollTrigger: { trigger: "#dias", start: "top 82%" } });
+
+  /* Encuentro: el ticket cae sobre el mapa */
+  gsap.fromTo(".ticket-final", { opacity: 0, y: -80, rotate: -12 }, { opacity: 1, y: 0, rotate: -2, duration: 1, ease: "bounce.out", scrollTrigger: { trigger: ".encuentro", start: "top 60%" },
+    onStart: function () { if (window.innerWidth <= 700) gsap.set(".ticket-final", { clearProps: "transform" }); } });
 })();
 </script>
 </body>
