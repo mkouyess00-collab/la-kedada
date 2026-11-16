@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'sha256-ZKkt0WIe0nvH0aFKLDK+oP5/TXM7JB00dKj35xL4imU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'sha256-sFm/dOsJz2gie2P05Z/PzpmahlculE4SfENY08DkqWY='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>La KeDada · Bar de tapas en Mota del Cuervo</title>
 <meta name="description" content="La KeDada, bar de tapas en la Plaza de la Tercia, 3, Mota del Cuervo (Cuenca). Más que una tapa, un punto de encuentro. Carta con precios y horario.">
@@ -51,6 +51,23 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 .pildora a{padding:11px 18px;border-radius:999px;font-family:"Barlow Condensed";font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;color:var(--crema2);transition:background .3s,color .3s}
 .pildora a:hover,.pildora a.activo{background:rgba(244,236,224,.1);color:#fff}
 .pildora a.menu{background:var(--rojo);color:#fff}
+
+/* ---------- 0. ENTRADA: el salón y el nombre ---------- */
+.entrada{height:100svh;min-height:560px;position:relative;overflow:hidden;display:grid;place-items:center;text-align:center;isolation:isolate;background:var(--carbon)}
+.entrada .fondo{position:absolute;inset:0;z-index:-2}
+.entrada .fondo img{width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:saturate(1.1)}
+.entrada::before{content:"";position:absolute;inset:0;z-index:-1;background:
+  radial-gradient(70% 60% at 50% 48%,rgba(16,12,11,.25),rgba(16,12,11,.78) 75%),
+  linear-gradient(180deg,rgba(16,12,11,.55),rgba(16,12,11,0) 30%,rgba(16,12,11,0) 60%,var(--carbon) 100%)}
+.entrada .cont{padding:0 16px;width:100%;min-width:0}
+.entrada .cond{font-size:clamp(13px,1.2vw,16px);color:var(--oro);text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.entrada .gigante{display:block;font-size:clamp(108px,21vw,330px);line-height:.9;margin:14px 0 6px;text-shadow:0 10px 50px rgba(0,0,0,.65)}
+.entrada .gigante span{display:inline-block}
+.entrada .lema2{font-family:"Barlow Condensed";font-weight:700;font-size:clamp(14px,1.5vw,20px);letter-spacing:.24em;text-transform:uppercase;text-shadow:0 2px 12px rgba(0,0,0,.9)}
+.entrada .lema2 i{font-style:normal;color:var(--rojo-claro);padding:0 .45em}
+.entrada .baja{position:absolute;left:50%;bottom:96px;transform:translateX(-50%);font-family:"Caveat Brush";font-size:26px;color:var(--crema);text-shadow:0 2px 12px rgba(0,0,0,.9);white-space:nowrap}
+.entrada .baja b{display:block;font-family:Barlow;font-size:22px;animation:baja 1.6s ease-in-out infinite}
+@keyframes baja{50%{transform:translateY(8px)}}
 
 /* ---------- 1. INVITACIÓN ---------- */
 .invita{min-height:100svh;display:grid;align-items:center;padding:110px 0 120px;overflow:hidden;
@@ -180,6 +197,10 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
   .logo-fijo{top:10px;left:12px;font-size:28px}
   .pildora{bottom:12px;width:calc(100% - 24px);justify-content:space-between}
   .pildora a{padding:10px 11px;font-size:13px;letter-spacing:.06em}
+  .entrada .gigante{font-size:26vw}
+  .entrada .cond{letter-spacing:.12em}
+  .entrada .lema2{letter-spacing:.1em}
+  .entrada .baja{bottom:84px;font-size:22px}
   .invita{padding:84px 0 100px}
   .quedamos{font-size:clamp(56px,17vw,80px)}
   .tarjeta{padding:4px 18px}
@@ -210,7 +231,7 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 </head>
 <body>
 
-<a href="#quedamos" class="logo-fijo marca" aria-label="La KeDada, inicio">La<span class="r">K</span>e<span class="r">D</span>ada</a>
+<a href="#inicio" class="logo-fijo marca" aria-label="La KeDada, inicio">La<span class="r">K</span>e<span class="r">D</span>ada</a>
 <nav class="pildora" aria-label="Principal">
   <a href="#tapas">Tapas</a>
   <a href="#semana">Horario</a>
@@ -219,11 +240,22 @@ body::after{content:"";position:fixed;inset:-50%;z-index:90;pointer-events:none;
 </nav>
 
 <main>
+<!-- 0. LA ENTRADA -->
+<section class="entrada" id="inicio">
+  <div class="fondo"><img src="img/entrada-salon.jpg" alt="El salón de La KeDada con guirnaldas de luces y suelo de damero" fetchpriority="high"></div>
+  <div class="cont">
+    <span class="cond">Bar · Plaza de la Tercia, 3 · Mota del Cuervo</span>
+    <h1 class="marca gigante" aria-label="La KeDada" data-nombre>La<span class="r">K</span>e<span class="r">D</span>ada</h1>
+    <div class="lema2">Tapas<i>•</i>Buena compañía<i>•</i>Siempre es un buen momento</div>
+  </div>
+  <a class="baja" href="#quedamos">Aquí empieza la keDada<b>↓</b></a>
+</section>
+
 <!-- 1. LA INVITACIÓN -->
 <section class="invita" id="quedamos">
   <div class="wrap rejilla">
     <div>
-      <h1><span class="quedamos" aria-label="¿Quedamos?" data-letras>¿Quedamos<span class="q">?</span></span></h1>
+      <h2><span class="quedamos" aria-label="¿Quedamos?" data-letras>¿Quedamos<span class="q">?</span></span></h2>
       <p class="sub">Aquí empieza la keDada.</p>
       <div class="tarjeta" id="tarjeta">
         <div class="fila"><span class="cond">Qué</span><div><b>Tapas, cañas y vermut</b><br>en el bar La KeDada</div></div>
@@ -471,15 +503,33 @@ if (window.top !== window.self) { window.top.location = window.self.location; }
   var q = document.querySelector("[data-letras]"), html = "";
   q.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent.split("").forEach(function (c) { html += "<span>" + c + "</span>"; }); else html += n.outerHTML; });
   q.innerHTML = html;
-  var tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+
+  /* Entrada: el salón se enciende y el nombre se pinta a pinceladas */
+  var nom = document.querySelector("[data-nombre]"), nh = "";
+  nom.childNodes.forEach(function (n) { if (n.nodeType === 3) n.textContent.split("").forEach(function (c) { nh += "<span>" + c + "</span>"; }); else nh += n.outerHTML; });
+  nom.innerHTML = nh;
+  if (lenis) lenis.stop();
+  gsap.timeline({ defaults: { ease: "power3.out" }, onComplete: function () { if (lenis) lenis.start(); } })
+    .fromTo(".entrada .fondo img", { scale: 1.35, filter: "brightness(.15) blur(10px) saturate(1.1)" }, { scale: 1.08, filter: "brightness(1) blur(0px) saturate(1.1)", duration: 2.4, ease: "power2.out" })
+    .from(nom.children, { clipPath: "inset(0 100% 0 0)", x: -30, duration: .55, stagger: .08, ease: "power2.out" }, .6)
+    .from(nom.querySelectorAll(".r"), { color: "#f4ece0", duration: .4, stagger: .15 }, ">-.1")
+    .from(".entrada .cond, .entrada .lema2", { opacity: 0, y: 16, duration: .8, stagger: .12 }, "<")
+    .from(".entrada .baja", { opacity: 0, duration: .6 }, ">-.2")
+    .from(".pildora", { y: 120, duration: .8, ease: "back.out(1.6)" }, "<")
+    .from(".logo-fijo", { y: -60, opacity: 0, duration: .6 }, "<");
+  /* Al bajar: entras en el bar (la foto se acerca y el nombre se queda atrás) */
+  gsap.timeline({ scrollTrigger: { trigger: ".entrada", start: "top top", end: "bottom top", scrub: true } })
+    .to(".entrada .fondo img", { scale: 1.3, ease: "none" }, 0)
+    .to(".entrada .cont", { scale: .8, opacity: 0, y: -60, ease: "none" }, 0)
+    .to(".entrada .baja", { opacity: 0, ease: "none", duration: .3 }, 0);
+
+  var tl = gsap.timeline({ defaults: { ease: "power3.out" }, scrollTrigger: { trigger: ".invita", start: "top 65%" } });
   tl.from(q.children, { y: -120, opacity: 0, duration: .9, stagger: .05, ease: "bounce.out" })
     .from(".invita .sub", { opacity: 0, x: -30, duration: .6 }, "-=.4")
     .from("#tarjeta", { y: 80, rotate: -6, opacity: 0, duration: .9, ease: "back.out(1.4)" }, "-=.3")
     .from("#tarjeta .fila", { opacity: 0, x: -20, stagger: .1, duration: .4 }, "-=.4")
     .from(".naipe", { x: function () { return 600; }, y: function (i) { return -300 + i * 120; }, rotate: function (i) { return 180 + i * 40; }, opacity: 0, duration: 1.1, stagger: .12, ease: "expo.out" }, .3)
-    .from(".mesa .pista", { opacity: 0, duration: .5 }, "-=.2")
-    .from(".pildora", { y: 120, duration: .8, ease: "back.out(1.6)" }, .6)
-    .from(".logo-fijo", { y: -60, opacity: 0, duration: .6 }, .5);
+    .from(".mesa .pista", { opacity: 0, duration: .5 }, "-=.2");
 
   /* Títulos: se descubren de izquierda a derecha, como subrayados con rotulador */
   gsap.utils.toArray("[data-linea]").forEach(function (h) {
